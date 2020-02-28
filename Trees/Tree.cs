@@ -18,28 +18,46 @@ namespace Trees
 
     class Tree
     {
-        Node root;
-        Queue<Node> qNodes = new Queue<Node>();
+        Node _root;
+        public Node Root
+        {
+            get{ return _root;}
+        }
+        
         public Tree()
         {
-            root = new Node(1);
+            _root = new Node(1);
         }
 
-        public void AddNode(Node node, int data)
+        public void AddNode(int data)
         {
-            qNodes.Enqueue(node);
-            if(node.Left == null)
-            {
-                node.Left = new Node(data);
-                return;
-            }
-            qNodes.Enqueue(node.Left);
-            if(node.Right == null)
-            {
-                node.Right = new Node(data);
-                return;
-            }
+            Node newNode = new Node(data);
 
+            Node currentNode = _root;
+            Queue<Node> qNodes = new Queue<Node>();
+            while(currentNode != null)
+            {
+                if(currentNode.Left == null)
+                {
+                    currentNode.Left = newNode;
+                    return;
+                }
+                else
+                {
+                    qNodes.Enqueue(currentNode.Left);
+                }
+
+                if(currentNode.Right == null)
+                {
+                    currentNode.Right = newNode;
+                    return;
+                }
+                else
+                {
+                    qNodes.Enqueue(currentNode.Right);
+                }
+                currentNode = qNodes.Dequeue();
+            }
         }
     }
 }

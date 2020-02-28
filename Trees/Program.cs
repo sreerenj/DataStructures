@@ -6,7 +6,16 @@ namespace Trees
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            // Create a tree
+
+            Tree tree = new Tree();
+            for(int i =2;i<=11;i++)
+            {
+                tree.AddNode(i);
+            }
+            
         }
     }
+
+
 }
