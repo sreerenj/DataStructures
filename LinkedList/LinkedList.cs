@@ -24,6 +24,22 @@ namespace LinkedList
             Start = newNode;
         }
 
+        public void AddNodeAtEnd(int data)
+        {
+            Node newNode = new Node(data);
+            if(Start == null)
+            {
+                Start = newNode;
+                return;
+            }
+            Node tempNode = Start;
+            while(tempNode.Next != null)
+            {
+                tempNode = tempNode.Next;
+            }
+
+
+        }
         public void ViewLinkedList()
         {
             Node tempNode = Start;
